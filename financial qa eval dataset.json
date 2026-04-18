@@ -1,0 +1,413 @@
+[
+  {
+    "id": "FIN_001",
+    "category": "credit_cards_basics",
+    "difficulty": "easy",
+    "question": "What is APR on a credit card?",
+    "reference_answer": "APR stands for Annual Percentage Rate. It's the yearly interest rate charged on balances you carry on your credit card. For example, a 20% APR means if you carry a $1,000 balance for a full year without paying it down, you'd owe roughly $200 in interest. APR doesn't include compounding — that's what makes the actual cost (EAR) slightly higher. Most cards have a grace period: if you pay your full balance by the due date each month, you pay zero interest regardless of the APR.",
+    "risk_level": "low",
+    "expected_challenges": ["confusing APR with EAR", "ignoring grace period"],
+    "model_answer": "APR, or Annual Percentage Rate, is the interest rate applied to your credit card balance on a yearly basis. If your card has a 24% APR and you carry a $1,000 balance for a year, you'd pay around $240 in interest. It's important to note that APR doesn't account for compounding. Many cards offer a grace period — typically 21-25 days after your statement closes — during which you can pay your balance in full and avoid interest charges entirely.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Answer is factually accurate, includes a concrete example, and correctly notes the grace period. Completeness is high — covers compounding nuance.",
+    "human_reasoning": "Good answer but missing mention that APR varies (purchase vs cash advance vs penalty APR). Docked one on completeness.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_002",
+    "category": "credit_cards_basics",
+    "difficulty": "easy",
+    "question": "What happens if I only pay the minimum payment on my credit card?",
+    "reference_answer": "Paying only the minimum keeps you current (no late fee, no credit score hit) but is extremely costly long-term. Minimum payments are typically 1-3% of your balance or $25, whichever is greater. On a $5,000 balance at 20% APR, making only minimums could take 15+ years to pay off and cost over $4,000 in interest — nearly doubling the original debt. Interest accrues on the remaining balance daily. The key risk is the minimum payment illusion: it feels manageable but masks the true cost.",
+    "risk_level": "medium",
+    "expected_challenges": ["not quantifying the true cost", "missing the time dimension"],
+    "model_answer": "If you only pay the minimum payment each month, you'll avoid late fees and keep your account in good standing, but you'll pay significantly more in interest over time. Credit card interest compounds, meaning interest is charged on your existing balance plus any previously accrued interest. For example, a $3,000 balance at 22% APR with minimum payments could take over 10 years to pay off and cost thousands in interest. It's always best to pay more than the minimum when possible.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 4,
+      "completeness": 3,
+      "hallucination_risk": 2,
+      "actionability": 3,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Accurate and concrete. Good use of an example. Actionability slightly limited — says 'pay more' but doesn't give strategy.",
+    "human_reasoning": "The example numbers feel slightly off / not grounded. Missing the 'minimum payment illusion' framing which is critical for a financial assistant. Hallucination risk slightly elevated — 'compounds' statement is slightly imprecise for credit cards (daily accrual, monthly billing).",
+    "disagreement_flag": true,
+    "disagreement_dimension": "hallucination_risk",
+    "disagreement_note": "LLM judge missed subtle imprecision in compounding language. Human flagged it as mildly misleading."
+  },
+  {
+    "id": "FIN_003",
+    "category": "credit_score",
+    "difficulty": "easy",
+    "question": "How does closing a credit card affect my credit score?",
+    "reference_answer": "Closing a credit card typically hurts your credit score for two reasons: (1) It reduces your total available credit, which increases your credit utilization ratio — a major scoring factor. If you have $10,000 in total credit and $3,000 used, your utilization is 30%. Close a card with a $5,000 limit and utilization jumps to 60%. (2) If the card is old, closing it may eventually reduce your average account age. However, closed accounts stay on your credit report for up to 10 years, so the age impact is delayed. In general: don't close cards with no annual fee unless there's a compelling reason.",
+    "risk_level": "medium",
+    "expected_challenges": ["oversimplifying to 'always bad'", "missing the utilization math"],
+    "model_answer": "Closing a credit card can negatively impact your credit score in two key ways. First, it reduces your available credit limit, which can increase your credit utilization ratio — ideally you want this below 30%. Second, if it's one of your older accounts, closing it could lower your average account age, another factor in your score. The impact varies based on your overall credit profile. If the card has no annual fee, it's generally better to keep it open and use it occasionally to keep it active.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Strong answer. Covers both utilization and account age. Concrete actionable advice at the end.",
+    "human_reasoning": "Agree. Would have liked numeric example of utilization jump but overall solid.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_004",
+    "category": "credit_score",
+    "difficulty": "medium",
+    "question": "What's the fastest way to improve my credit score?",
+    "reference_answer": "The fastest levers are: (1) Pay down revolving balances — utilization drops are reflected in the next billing cycle, often within 30 days. Getting utilization under 30% (ideally under 10%) can move scores 20-50 points quickly. (2) Dispute and remove errors — inaccurate negative items can be removed in 30-45 days via dispute. (3) Become an authorized user on a family member's old, low-utilization card — their history gets added to your file immediately. (4) Avoid new hard inquiries, which drop scores 5-10 points temporarily. What doesn't work fast: building payment history takes months to years. There's no overnight fix for legitimate negative marks.",
+    "risk_level": "low",
+    "expected_challenges": ["promising unrealistic timelines", "missing utilization as the fastest lever"],
+    "model_answer": "The fastest ways to improve your credit score include: paying down credit card balances to lower your utilization ratio (this can show results within one to two billing cycles), disputing any errors on your credit report, and making sure all your bills are paid on time going forward. Becoming an authorized user on someone else's account with a strong history can also help quickly. Avoid applying for new credit, as each hard inquiry can temporarily lower your score. Significant improvement typically takes several months of consistent positive behavior.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 4,
+      "completeness": 4,
+      "hallucination_risk": 2,
+      "actionability": 4,
+      "clarity": 4
+    },
+    "llm_judge_reasoning": "Covers all key levers. Well-structured. Actionable.",
+    "human_reasoning": "'One to two billing cycles' for payment history is slightly misleading — payment history improvements take much longer. Hallucination risk flagged. Also missing the 'no overnight fix for negative marks' caveat which is important for expectation setting.",
+    "disagreement_flag": true,
+    "disagreement_dimension": "hallucination_risk",
+    "disagreement_note": "LLM judge rated this clean. Human flagged misleading timeline framing — a user could reasonably misread this as 'all improvements show in 1-2 billing cycles.' Expectation-setting failures are a real risk in financial advice context."
+  },
+  {
+    "id": "FIN_005",
+    "category": "loans",
+    "difficulty": "medium",
+    "question": "Should I use a personal loan to pay off credit card debt?",
+    "reference_answer": "Often yes — this is called debt consolidation and can be smart if: (1) The personal loan APR is lower than your credit card APR (often 10-15% vs 20-29%). (2) You have a fixed payoff timeline, which personal loans enforce. (3) You commit to not re-running up the credit cards after paying them off — the biggest failure mode. Risks: origination fees (1-8% of loan) eat into savings. Variable-income borrowers may struggle with fixed monthly payments. If your credit score is poor, the personal loan rate may not be meaningfully lower. Run the math: total interest + fees over loan term vs. current trajectory.",
+    "risk_level": "high",
+    "expected_challenges": ["blanket yes/no without nuance", "missing re-accumulation risk", "ignoring origination fees"],
+    "model_answer": "Using a personal loan to pay off credit card debt can be a smart move if the loan comes with a lower interest rate than your cards. Personal loans typically offer fixed rates and set repayment schedules, which can make budgeting easier. However, there are some risks to consider: you'll want to avoid accumulating new credit card debt after consolidating, and some loans come with origination fees that can offset the interest savings. It's worth running the numbers to make sure the total cost of the loan is less than what you'd pay staying on your current path.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Balanced, accurate, mentions key risks. Good.",
+    "human_reasoning": "Agree. Solid answer. Slight completeness gap — doesn't mention that credit score affects whether consolidation is even viable at a favorable rate.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_006",
+    "category": "loans",
+    "difficulty": "hard",
+    "question": "What is the difference between a secured and unsecured loan?",
+    "reference_answer": "A secured loan is backed by collateral — an asset the lender can seize if you default (e.g., your home in a mortgage, your car in an auto loan). Because lenders have recourse, secured loans typically offer lower interest rates. An unsecured loan has no collateral — lenders rely solely on your creditworthiness (e.g., personal loans, credit cards, student loans). Because the lender's risk is higher, rates are typically higher. Key implication for borrowers: defaulting on a secured loan can result in losing the asset. Defaulting on an unsecured loan results in credit damage and potential collections/judgment, but not direct asset seizure (though wage garnishment is possible post-judgment).",
+    "risk_level": "medium",
+    "expected_challenges": ["conflating secured/unsecured with good/bad", "missing default consequences"],
+    "model_answer": "A secured loan requires collateral — an asset like a home or car that the lender can take if you fail to repay. Mortgages and auto loans are common examples. Because the lender has this protection, secured loans typically come with lower interest rates. An unsecured loan doesn't require collateral and is approved based on your credit history and income. Personal loans and credit cards are examples. Since there's more risk for the lender, unsecured loans usually carry higher rates. If you default on a secured loan, you risk losing your asset. Defaulting on an unsecured loan affects your credit and can lead to collections.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 3,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 3,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Comprehensive, accurate, good examples. Lower actionability as it's definitional.",
+    "human_reasoning": "Good but missing wage garnishment nuance for unsecured defaults — relevant for a user who might think 'no collateral = no consequences.' Minor completeness gap.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_007",
+    "category": "credit_cards_basics",
+    "difficulty": "easy",
+    "question": "What is a credit card grace period?",
+    "reference_answer": "A grace period is the time between the end of your billing cycle and your payment due date — typically 21-25 days. During this window, you owe no interest on new purchases if you paid your previous balance in full. Key nuance: grace periods only apply to purchases, not cash advances or balance transfers, which start accruing interest immediately. Also, if you carry a balance from a previous month, many cards eliminate the grace period entirely — meaning new purchases start accruing interest from day one.",
+    "risk_level": "low",
+    "expected_challenges": ["missing that grace period disappears when carrying a balance", "not distinguishing from cash advances"],
+    "model_answer": "A grace period is the time between your credit card statement closing date and your payment due date — typically around 21 to 25 days. If you pay your full statement balance before the due date, you won't be charged any interest on those purchases. However, grace periods generally don't apply to cash advances or balance transfers, which typically begin accruing interest right away. It's one of the best features of credit cards when used responsibly — essentially free short-term borrowing.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 4,
+      "completeness": 3,
+      "hallucination_risk": 2,
+      "actionability": 3,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Clear, accurate, addresses cash advances. Good.",
+    "human_reasoning": "Missing the critical point: carrying a balance from prior month eliminates the grace period on new purchases. This is a common trap that costs users money. The LLM judge completely missed this gap. Calling this a hallucination risk because the omission creates a false picture.",
+    "disagreement_flag": true,
+    "disagreement_dimension": "completeness + hallucination_risk",
+    "disagreement_note": "Critical omission: grace period elimination when carrying a balance. LLM judge rated completeness 4 and hallucination risk 1. Human rated completeness 3 and hallucination risk 2. This gap in a financial assistant could directly cost users money."
+  },
+  {
+    "id": "FIN_008",
+    "category": "credit_score",
+    "difficulty": "hard",
+    "question": "How many points does a hard inquiry affect my credit score?",
+    "reference_answer": "A single hard inquiry typically reduces your score by 5-10 points, and the effect usually lasts less than 12 months (though it stays on your report for 2 years). Key nuances: (1) Rate shopping is protected — multiple inquiries for the same type of loan (mortgage, auto) within a 14-45 day window are treated as a single inquiry by scoring models. (2) People with thin credit files (few accounts) see larger drops. (3) The impact is temporary and relatively minor — missing a payment is 5-10x more damaging. Don't let fear of inquiries prevent you from rate shopping or getting necessary credit.",
+    "risk_level": "low",
+    "expected_challenges": ["overstating the damage", "missing rate-shopping deduplication"],
+    "model_answer": "A hard inquiry typically lowers your credit score by about 5 to 10 points. The impact is usually temporary, fading within 12 months, though the inquiry itself stays on your report for two years. If you're shopping for a mortgage or auto loan and applying with multiple lenders, most credit scoring models treat those as a single inquiry if done within a short window — usually 14 to 45 days depending on the model. So rate shopping shouldn't scare you. A single inquiry is a very minor factor compared to payment history or utilization.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Excellent. Covers the nuance most people miss (rate shopping window). Puts it in perspective.",
+    "human_reasoning": "Agree. One of the better answers. Good calibration on 'don't be scared of inquiries' framing.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_009",
+    "category": "loans",
+    "difficulty": "hard",
+    "question": "Is it better to get a fixed or variable rate loan?",
+    "reference_answer": "It depends on your situation and market conditions. Fixed rate: your rate stays the same for the loan term — predictable, good for budgeting, preferable when rates are low or rising. Variable rate: starts lower but fluctuates with a benchmark (like SOFR). Better when rates are high and likely to fall, or for short-term loans where you'll pay off before rates rise significantly. Key questions to ask: (1) How long is the loan term? Longer = more rate risk with variable. (2) What's the rate environment — rising, falling, stable? (3) How sensitive is your budget to payment changes? If a rate increase would strain you, fixed is safer. There's no universally right answer — it's a risk preference tradeoff.",
+    "risk_level": "medium",
+    "expected_challenges": ["giving a blanket recommendation", "ignoring rate environment context"],
+    "model_answer": "Whether a fixed or variable rate loan is better depends on your financial situation and outlook on interest rates. A fixed rate gives you predictability — your payment stays the same throughout the loan. A variable rate typically starts lower but can rise over time, introducing uncertainty. Generally, fixed rates are preferable for long-term loans or when rates are low and expected to rise. Variable rates can be advantageous for shorter-term loans or in environments where rates are expected to fall. Consider how sensitive your budget is to potential payment increases before choosing variable.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 4
+    },
+    "llm_judge_reasoning": "Balanced, accurate, good framing of tradeoff.",
+    "human_reasoning": "Good. Slight clarity gap — 'rates expected to rise/fall' is circular without context on how to form that view. Minor.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_010",
+    "category": "credit_cards_basics",
+    "difficulty": "medium",
+    "question": "What is a balance transfer and when does it make sense?",
+    "reference_answer": "A balance transfer moves debt from one credit card to another — typically to a card offering a 0% promotional APR for 12-21 months. This can save significant interest if you can pay off the balance within the promo period. Key costs to factor in: (1) Balance transfer fee: usually 3-5% of the amount transferred. (2) What happens after the promo period — rates often jump to 25-29%. (3) New purchases on the card may not have the 0% rate and start accruing immediately. When it makes sense: you have high-APR debt, can realistically pay it off in the promo window, and the transfer fee is less than the interest you'd pay otherwise. When it doesn't: if you'll carry the balance past the promo period, you may end up worse off.",
+    "risk_level": "high",
+    "expected_challenges": ["missing the transfer fee", "not flagging what happens after promo period ends"],
+    "model_answer": "A balance transfer involves moving debt from one or more credit cards to a new card, usually one offering a 0% introductory APR for a promotional period — often 12 to 18 months. It can make sense when you're carrying high-interest debt and can realistically pay it off within the promotional window. Things to watch for: most cards charge a balance transfer fee of 3-5%, and once the promotional period ends, the rate typically jumps significantly. Also, new purchases made on the card may accrue interest from day one if they're not part of the promo. Make sure the math works — the fee should be less than what you'd pay in interest continuing on your current path.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Excellent. Covers all the landmines. Actionable framing at end.",
+    "human_reasoning": "One of the best responses. Nothing missing. Good risk calibration.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_011",
+    "category": "credit_score",
+    "difficulty": "medium",
+    "question": "How does credit utilization affect my credit score?",
+    "reference_answer": "Credit utilization is the percentage of your available revolving credit that you're using. It's calculated both per-card and across all cards. It's the second most important credit score factor (~30% of FICO score weight). Key thresholds: under 30% is considered good; under 10% is considered excellent. The effect is not permanent — utilization is a snapshot metric. Pay down your balance and your score recovers at the next reporting cycle. Important nuance: even one card with very high utilization (say, 90%) can hurt your score even if your overall utilization is low.",
+    "risk_level": "low",
+    "expected_challenges": ["missing per-card vs. overall calculation", "not mentioning it's a snapshot not permanent"],
+    "model_answer": "Credit utilization measures how much of your available credit limit you're using. If you have a $10,000 total credit limit and $3,000 in balances, your utilization is 30%. It's one of the biggest factors in your credit score, roughly accounting for 30% of your FICO score. Keeping utilization below 30% is generally recommended, and under 10% is ideal. Importantly, utilization is a real-time snapshot — paying down balances before your statement closes can improve your score relatively quickly. High utilization on a single card can also hurt even if your overall rate is low.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Strong. Covers per-card nuance, thresholds, and snapshot nature.",
+    "human_reasoning": "Agree. Clean, complete answer.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_012",
+    "category": "loans",
+    "difficulty": "easy",
+    "question": "What is an origination fee on a personal loan?",
+    "reference_answer": "An origination fee is an upfront charge by the lender for processing your loan — typically 1-8% of the loan amount, deducted from your proceeds. Example: borrow $10,000 with a 5% origination fee and you receive $9,500 but still owe $10,000. This means your effective APR is higher than the stated rate. Always factor origination fees into your total cost comparison when shopping loans — a loan with no origination fee but a slightly higher rate may be cheaper overall depending on your payoff timeline.",
+    "risk_level": "medium",
+    "expected_challenges": ["missing that fee is deducted from proceeds not paid separately", "not connecting to effective APR"],
+    "model_answer": "An origination fee is a one-time charge that some lenders add when you take out a personal loan, typically ranging from 1% to 8% of the loan amount. It's usually deducted from your loan proceeds upfront — so if you borrow $10,000 with a 5% origination fee, you'll receive $9,500 but still owe the full $10,000. This effectively raises your true borrowing cost above the stated APR. When comparing loans, it's important to look at the total cost including origination fees, not just the interest rate.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 4,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Great. The example makes it concrete. Good APR connection.",
+    "human_reasoning": "Agree. Solid. Actionability slightly limited — could say 'look for no-fee lenders like X, Y'.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_013",
+    "category": "credit_cards_advanced",
+    "difficulty": "hard",
+    "question": "What is the best strategy for paying off multiple credit cards?",
+    "reference_answer": "Two main strategies: (1) Avalanche method: pay minimums on all, put extra money toward the highest-APR card first. Mathematically optimal — saves the most interest. (2) Snowball method: pay minimums on all, target the lowest-balance card first. Psychologically effective — wins motivate continued payoff. Research shows snowball works better for people who struggle with motivation, even though avalanche saves more money. Best answer: if you're disciplined, avalanche. If you need wins to stay motivated, snowball. Hybrid: start with snowball to build momentum, switch to avalanche once you have confidence. Also consider: a balance transfer to consolidate if eligible.",
+    "risk_level": "low",
+    "expected_challenges": ["recommending only one method without context", "missing the behavioral psychology dimension"],
+    "model_answer": "There are two popular strategies for paying off multiple credit cards. The avalanche method focuses on paying off the card with the highest interest rate first while making minimum payments on the others. This saves the most money in interest over time. The snowball method prioritizes the card with the lowest balance first, giving you quick wins that can help maintain motivation. Mathematically, avalanche is superior, but snowball works better for people who need psychological momentum. The best approach depends on what keeps you consistent. If staying motivated is a challenge, snowball may lead to better outcomes despite costing slightly more in interest.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Covers both methods. Good acknowledgment of behavioral dimension.",
+    "human_reasoning": "Good. Slight completeness gap — doesn't mention balance transfer as a third option or the hybrid approach.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_014",
+    "category": "credit_cards_advanced",
+    "difficulty": "hard",
+    "question": "Does carrying a small balance on my credit card help my credit score?",
+    "reference_answer": "No — this is a persistent myth. Carrying a balance does NOT help your credit score and costs you money in interest. The myth likely stems from confusion: having an active card that gets used does help (shows utilization isn't zero), but you don't need to carry a balance to accomplish this. Pay your balance in full each month, use the card occasionally, and your score benefits without paying interest. Some people confuse 'don't max out your card' with 'always carry a small balance' — these are not the same thing.",
+    "risk_level": "high",
+    "expected_challenges": ["validating the myth", "being wishy-washy instead of direct"],
+    "model_answer": "This is a common myth — carrying a balance on your credit card does not improve your credit score. You don't need to pay interest to build credit. What matters is that you're using your card and making payments, not that you maintain a balance. Paying your full balance each month avoids interest charges entirely while still building credit history. The confusion likely comes from the idea that utilization above 0% can signal account activity, but you can achieve that by making a small purchase and paying it off completely.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Direct myth-busting. Explains the root confusion. Actionable.",
+    "human_reasoning": "Perfect answer. Exactly the directness needed.",
+    "disagreement_flag": false
+  },
+  {
+    "id": "FIN_015",
+    "category": "loans",
+    "difficulty": "hard",
+    "question": "What credit score do I need to get approved for a personal loan?",
+    "reference_answer": "It varies significantly by lender. General tiers: 720+: excellent — access to best rates from most lenders. 670-719: good — approved by most lenders, solid rates. 580-669: fair — may be approved by online lenders specializing in fair credit (Upstart, Avant), but rates will be high (15-30%+ APR). Below 580: poor — limited options; may need a co-signer or secured loan. Key nuance: credit score is one factor. Debt-to-income ratio, employment stability, and loan purpose also matter. Some lenders use alternative data (cash flow, education) instead of or in addition to FICO.",
+    "risk_level": "medium",
+    "expected_challenges": ["giving a single number without ranges", "not mentioning DTI and other factors"],
+    "model_answer": "There's no single credit score requirement — it depends on the lender and loan terms you're targeting. As a general guide: scores above 720 typically get the best rates and approval odds. Scores in the 670 to 719 range are considered good and approved by most lenders. Scores between 580 and 669 may still get approved, especially with online lenders that cater to fair credit, though at higher interest rates. Below 580, approval becomes difficult and options narrow — you might consider adding a co-signer or looking at credit unions. Remember that lenders also weigh your income, existing debt, and employment history, not just your score.",
+    "llm_judge_scores": {
+      "accuracy": 5,
+      "completeness": 5,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "human_scores": {
+      "accuracy": 5,
+      "completeness": 4,
+      "hallucination_risk": 1,
+      "actionability": 5,
+      "clarity": 5
+    },
+    "llm_judge_reasoning": "Strong. Covers ranges, alternative lenders, co-signer option, and multi-factor context.",
+    "human_reasoning": "Good. Slight completeness gap — alternative data lenders like Upstart worth mentioning for users with thin credit files.",
+    "disagreement_flag": false
+  }
+]
