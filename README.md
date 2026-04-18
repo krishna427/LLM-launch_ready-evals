@@ -38,3 +38,56 @@ The most important thing this framework surfaces: **the gap between automated an
 
 LLM judges are reliable for some things (factual errors, clarity) and systematically unreliable for others (errors of omission, false impressions created by technically accurate but incomplete answers).
 
+
+Clarity: trust automated evaluation. Everything else: verify.
+
+---
+
+## Quick Start
+
+```python
+from core.evaluator import EvalPipeline
+from core.rubric import Rubric
+
+rubric = Rubric.from_yaml("use_cases/personal_finance_qa/rubric.yaml")
+
+pipeline = EvalPipeline(rubric=rubric, judge_model="gpt-4o")
+
+results = pipeline.run(
+    dataset_path="use_cases/personal_finance_qa/dataset.json",
+    model_responses_path="your_model_outputs.json",
+)
+
+results.launch_verdict()    # Pass / Fail per dimension
+results.gap_analysis()      # Where auto eval diverges from human
+results.failure_report()    # What broke and why
+
+
+llm-eval-toolkit/
+├── README.md
+├── core/
+│   ├── evaluator.py         ← Core evaluation loop
+│   ├── judge.py             ← LLM-as-judge engine
+│   └── rubric.py            ← Rubric interface
+├── use_cases/
+│   ├── personal_finance_qa/ ← Reference implementation
+│   │   ├── dataset.json
+│   │   └── rubric.yaml
+│   └── template/            ← Blank template for new use cases
+├── prompts/
+│   └── judge_prompt.txt     ← Generic judge prompt
+├── notebooks/
+│   └── eval_analysis.py     ← Analysis + visualizations
+└── results/
+
+
+---
+
+After pasting:
+
+1. Click **Preview** tab — you should see headers, a table, and code blocks rendering cleanly
+2. If it looks good → scroll down → **Commit changes**
+3. Go back to your repo homepage and the README will render correctly
+
+Let me know what you see in Preview.​​​​​​​​​​​​​​​​
+
