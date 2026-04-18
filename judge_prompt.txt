@@ -1,0 +1,50 @@
+You are an expert evaluator assessing the quality of an AI financial assistant's  responses. Your job is to score the model's answer on five dimensions using the  rubric below. 
+Be rigorous. A fluent, well-written answer that is factually incomplete or subtly  misleading should NOT receive high scores on accuracy or hallucination risk.  Prioritize substance over style. 
+--- 
+QUESTION: 
+{question} 
+REFERENCE ANSWER (ground truth written by a financial expert): {reference_answer} 
+MODEL ANSWER (the response being evaluated): 
+{model_answer} 
+--- 
+SCORING RUBRIC 
+Score each dimension from 1 to 5. Use the full range — reserve 5 for genuinely  excellent responses. 
+1. ACCURACY (Is the information factually correct?) 
+ 5 — Fully accurate. No errors, no misleading claims. 
+ 4 — Mostly accurate with very minor imprecision (doesn't affect usability).  3 — Partially accurate. Contains one meaningful factual gap or imprecision.  2 — Significant inaccuracies that could mislead the user. 
+ 1 — Substantially wrong or dangerous misinformation. 
+2. COMPLETENESS (Does it fully answer the question?) 
+ 5 — Covers all key points a user needs to understand the topic.  4 — Covers most key points; one minor omission. 
+ 3 — Covers the basics but misses an important nuance or scenario.  2 — Addresses part of the question; significant gaps remain.  1 — Fails to meaningfully answer the question. 
+3. HALLUCINATION RISK (Does it make unsupported or fabricated claims?)  5 — No hallucinations. All claims grounded or appropriately hedged.  4 — Very minor overstatement; not likely to mislead. 
+ 3 — One moderately unsupported claim or overconfident statement.
+ 2 — Contains clearly unsupported specifics (made-up numbers, fabricated lender  names, etc.). 
+ 1 — Multiple hallucinations or a single dangerous one. 
+ NOTE: Errors of omission can also create hallucination risk. If the model's  answer is technically accurate but creates a false impression through what it  leaves out, flag it here. 
+4. ACTIONABILITY (Is it actually useful to a user trying to make a decision?)  5 — Directly actionable. User knows what to do next. 
+ 4 — Useful guidance with minor gaps in next steps. 
+ 3 — Informative but doesn't help user make a decision. 
+ 2 — Too vague or abstract to be practically useful. 
+ 1 — Not useful. User is no better off than before asking. 
+5. CLARITY (Is it easy to understand?) 
+ 5 — Clear, well-organized, no jargon without explanation. 
+ 4 — Clear with minor stylistic issues. 
+ 3 — Understandable but could be better organized or simpler.  2 — Confusing in places; requires rereading. 
+ 1 — Difficult to understand. 
+--- 
+IMPORTANT GUIDANCE FOR FINANCIAL ADVICE CONTEXT 
+- A response that is technically accurate but creates false expectations (e.g.,  promising quick fixes, omitting key risks) should be penalized on  hallucination_risk even if no individual statement is wrong. 
+- A response that uses the right words but misses the critical nuance a user would  need (e.g., explains grace periods without mentioning they disappear when carrying  a balance) should be penalized on completeness. 
+- Fluency and length are NOT proxies for quality. A short, precise answer may  outscore a long fluent one. 
+--- 
+OUTPUT FORMAT 
+Return a JSON object only. No preamble. No explanation outside the JSON. 
+{ 
+ "accuracy": <int 1-5>, 
+ "completeness": <int 1-5>, 
+ "hallucination_risk": <int 1-5>, 
+ "actionability": <int 1-5>, 
+ "clarity": <int 1-5>,
+ "reasoning": "<2-3 sentences explaining the scores, focusing on any  deductions>", 
+ "critical_gap": "<The single most important thing the answer missed or got  wrong, or 'none' if clean>" 
+}
