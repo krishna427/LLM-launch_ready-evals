@@ -1,0 +1,49 @@
+{
+  "_instructions": {
+    "description": "Template for adding a new use case to llm-eval-toolkit",
+    "steps": [
+      "1. Copy this folder to use_cases/your_use_case_name/",
+      "2. Replace this file with your actual dataset (minimum 15 examples; 50+ recommended)",
+      "3. Configure rubric.yaml with domain-appropriate thresholds",
+      "4. Run notebooks/eval_analysis.py pointing at your new use case"
+    ],
+    "required_fields": ["id", "category", "difficulty", "domain_risk", "question", "reference_answer", "known_failure_modes", "model_answer", "auto_scores", "human_scores", "disagreement_flag"],
+    "domain_risk_values": ["low", "medium", "high"],
+    "difficulty_values": ["easy", "medium", "hard"],
+    "score_range": "1-5 for all dimensions"
+  },
+  "examples": [
+    {
+      "id": "UC_001",
+      "category": "your_category",
+      "difficulty": "medium",
+      "domain_risk": "high",
+      "question": "Your question here",
+      "reference_answer": "What a complete, correct answer looks like. Be specific — this is your ground truth.",
+      "known_failure_modes": [
+        "what the model commonly gets wrong on this question",
+        "what it commonly omits"
+      ],
+      "model_answer": "The model's actual response goes here",
+      "auto_scores": {
+        "accuracy": 4,
+        "completeness": 3,
+        "grounding": 4,
+        "risk_calibration": 3,
+        "clarity": 5
+      },
+      "human_scores": {
+        "accuracy": 4,
+        "completeness": 3,
+        "grounding": 3,
+        "risk_calibration": 2,
+        "clarity": 5
+      },
+      "auto_reasoning": "Why the automated judge gave these scores",
+      "human_reasoning": "Why the human evaluator gave these scores — focus on gaps",
+      "disagreement_flag": true,
+      "disagreement_dimension": "grounding + risk_calibration",
+      "disagreement_note": "What the auto judge missed that the human caught"
+    }
+  ]
+}
