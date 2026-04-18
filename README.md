@@ -44,9 +44,10 @@ results = pipeline.run(
 results.launch_verdict()
 results.gap_analysis()
 results.failure_report()
+```
 
-questions file:
-
+## Questions file:
+```
 [
   {
     "id": "Q001",
@@ -57,17 +58,18 @@ questions file:
     "domain_risk": "low/medium/high"
   }
 ]
-
-responses file:
+```
+## Responses file:
+```
 [
   {
     "id": "Q001",
     "response": "The model response to evaluate"
   }
 ]
-
-output 
-
+```
+## Output 
+```
 LAUNCH READINESS VERDICT
 ============================================================
 Dimension              Score     Threshold     Status
@@ -77,10 +79,10 @@ completeness           4.27      4.0           PASS
 grounding              4.13      4.2           FAIL
 risk_calibration       4.33      4.2           PASS
 clarity                4.87      3.8           PASS
-
-Overall: NOT READY FOR LAUNCH
+```
+## Overall: NOT READY FOR LAUNCH
 ============================================================
-
+```
 llm-eval-toolkit/
 ├── README.md
 ├── core/
@@ -92,7 +94,7 @@ llm-eval-toolkit/
 ├── examples/
 │   └── quickstart.py      <- Minimal working example
 └── requirements.txt
-
+```
 Key Design Decisions
 Rubric-first. Thresholds are configured per use case. What passes for a low-risk chatbot should not pass for a medical or legal assistant.
 Gap analysis built in. The framework explicitly tracks where automated evaluation diverges from human judgment — because knowing which dimensions to trust is as important as the scores themselves.
