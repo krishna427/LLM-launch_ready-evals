@@ -79,9 +79,12 @@ completeness           4.27      4.0           PASS
 grounding              4.13      4.2           FAIL
 risk_calibration       4.33      4.2           PASS
 clarity                4.87      3.8           PASS
-```
-## Overall: NOT READY FOR LAUNCH
+
+Overall: NOT READY FOR LAUNCH
+
 ============================================================
+```
+## Repository Structure
 ```
 llm-eval-toolkit/
 ├── README.md
@@ -95,7 +98,7 @@ llm-eval-toolkit/
 │   └── quickstart.py      <- Minimal working example
 └── requirements.txt
 ```
-Key Design Decisions
+## Key Design Decisions
 Rubric-first. Thresholds are configured per use case. What passes for a low-risk chatbot should not pass for a medical or legal assistant.
 Gap analysis built in. The framework explicitly tracks where automated evaluation diverges from human judgment — because knowing which dimensions to trust is as important as the scores themselves.
 Bring your own data. No dataset is bundled. The framework evaluates whatever you bring to it.
@@ -103,6 +106,6 @@ Limitations
 	•	Automated judge scores require API access (OpenAI or Anthropic)
 	•	Human scores must be provided separately for gap analysis
 	•	Statistical reliability requires 50+ examples in production use
-License
+## License
 MIT
 This project is independently created using publicly available information and self-generated data. It does not reflect the methods, systems, data, or opinions of any current or former employer.
