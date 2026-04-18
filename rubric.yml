@@ -1,0 +1,54 @@
+use_case: "Personal Finance Education Assistant"
+domain_risk_level: high
+
+# Dimensions are weighted and thresholded for a high-risk informational domain.
+# Grounding and risk_calibration are upweighted because the primary failure mode
+# in financial education is not factual error but false confidence — answers that
+# are technically accurate but create misleading impressions through omission or
+# imprecise framing.
+
+dimensions:
+  accuracy:
+    weight: 1.0
+    launch_threshold: 4.0
+    description: >
+      All factual claims are correct. Numbers, rates, rules, and mechanisms
+      are accurately described. Minor imprecision acceptable if it doesn't
+      affect the user's ability to make a good decision.
+
+  completeness:
+    weight: 1.0
+    launch_threshold: 4.0
+    description: >
+      The response covers what the user needs to understand the topic and
+      make informed decisions. Excludes unnecessary detail, but includes
+      critical nuances — particularly the failure modes and edge cases
+      that distinguish a helpful answer from a superficially correct one.
+
+  grounding:
+    weight: 1.3
+    launch_threshold: 4.2
+    description: >
+      All claims are supported by evidence, common knowledge, or explicitly
+      hedged as estimates. No false impressions created by omission.
+      Technically accurate statements that would lead a user to a wrong
+      conclusion through what they leave out are penalized here.
+
+  risk_calibration:
+    weight: 1.3
+    launch_threshold: 4.2
+    description: >
+      Uncertainty is appropriately surfaced. The response does not overstate
+      certainty in inherently variable outcomes (investment returns, credit
+      score timelines, loan approval odds). Appropriate caveats are present
+      without being so hedged as to be useless. Recommends professional
+      advice where genuinely warranted (legal, tax, complex financial decisions).
+
+  clarity:
+    weight: 0.8
+    launch_threshold: 3.8
+    description: >
+      The response is understandable to a general audience without prior
+      financial knowledge. Technical terms are explained or avoided.
+      Structure aids comprehension. Length is appropriate — not padded,
+      not so brief as to omit necessary context.

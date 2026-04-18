@@ -1,0 +1,46 @@
+# Rubric template for llm-eval-toolkit
+# Copy to use_cases/your_use_case/rubric.yaml and customize
+
+use_case: "Your Use Case Name"
+domain_risk_level: high  # low | medium | high
+
+# Adjust thresholds based on stakes.
+# High-risk domains (health, finance, legal): grounding/risk_calibration >= 4.2
+# Medium-risk domains: all thresholds around 4.0
+# Low-risk domains: thresholds around 3.8
+
+dimensions:
+  accuracy:
+    weight: 1.0
+    launch_threshold: 4.0
+    description: >
+      Describe what factual accuracy means in your domain.
+      What kinds of errors are most dangerous?
+
+  completeness:
+    weight: 1.0
+    launch_threshold: 4.0
+    description: >
+      What does a complete answer look like here?
+      What are the critical nuances that must be included?
+
+  grounding:
+    weight: 1.3      # Upweight for high-stakes domains
+    launch_threshold: 4.2
+    description: >
+      Are claims supported or hedged? Does the answer create
+      any false impressions through omission?
+
+  risk_calibration:
+    weight: 1.3      # Upweight for high-stakes domains
+    launch_threshold: 4.2
+    description: >
+      Is uncertainty appropriately communicated?
+      Does the answer know what it doesn't know?
+
+  clarity:
+    weight: 0.8
+    launch_threshold: 3.8
+    description: >
+      Is the response understandable to your target audience
+      without prior domain knowledge?
