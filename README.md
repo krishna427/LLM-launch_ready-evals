@@ -39,6 +39,15 @@ The most important thing this framework surfaces: **the gap between automated an
 LLM judges are reliable for some things (factual errors, clarity) and systematically unreliable for others (errors of omission, false impressions created by technically accurate but incomplete answers).
 
 
+
+Dimension           Auto Mean   Human Mean   Bias
+accuracy            4.87        4.67         +0.20
+completeness        4.60        4.27         +0.33  ⚠️
+grounding           4.87        4.53         +0.34  ⚠️
+risk_calibration    4.53        4.20         +0.33  ⚠️
+clarity             4.93        4.87         +0.07  ✅
+
+
 Clarity: trust automated evaluation. Everything else: verify.
 
 ---
@@ -63,6 +72,8 @@ results.gap_analysis()      # Where auto eval diverges from human
 results.failure_report()    # What broke and why
 
 
+Repository Structure
+
 llm-eval-toolkit/
 ├── README.md
 ├── core/
@@ -81,13 +92,23 @@ llm-eval-toolkit/
 └── results/
 
 
----
+Adding a New Use Case
+	1.	Copy use_cases/template/ to use_cases/your_use_case/
+	2.	Write your dataset (15+ examples minimum)
+	3.	Configure thresholds in rubric.yaml
+	4.	Run notebooks/eval_analysis.py
+The framework is domain-agnostic. It has been tested on personal finance Q&A and is designed to generalize to any high-risk informational assistant.
 
-After pasting:
+Launch Readiness vs Quality Score
+A quality score tells you how good responses are on average.
+Launch readiness tells you whether the distribution is acceptable — including the tail. This toolkit computes both.
 
-1. Click **Preview** tab — you should see headers, a table, and code blocks rendering cleanly
-2. If it looks good → scroll down → **Commit changes**
-3. Go back to your repo homepage and the README will render correctly
+Limitations
+	•	Reference implementation uses 15 examples — enough to surface patterns, not to make statistical claims
+	•	Human scores are simulated based on domain knowledge, not collected from real annotators
+	•	No latency or cost analysis
 
-Let me know what you see in Preview.​​​​​​​​​​​​​​​​
+License
+MIT
 
+This project is independently created using publicly available information and self-generated data. It does not reflect the methods, systems, data, or opinions of any current or former employer..​​​​​​​​​​
